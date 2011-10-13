@@ -1,0 +1,5 @@
+#!/bin/bash
+COMMIT=`git log --pretty --format=%H | tail -1`
+git config filter.myconfig.smudge cat
+git config filter.myconfig.clean "git show ${COMMIT}:config"
+git checkout -- config
